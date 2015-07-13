@@ -1,0 +1,3 @@
+[submodule "Lattice/rsscommon"]
+	path = Lattice/rsscommon
+	url = https://github.com/packagesdev/rsscommon
