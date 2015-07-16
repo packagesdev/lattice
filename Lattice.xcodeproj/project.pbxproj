@@ -96,6 +96,9 @@
 		F42C8AF61B55025C0030F2EC /* tasty_thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "tasty_thumbnail@2x.png"; path = "images/tasty_thumbnail@2x.png"; sourceTree = "<group>"; };
 		F44892941B571E350050D0E4 /* thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thumbnail.png; path = images/thumbnail.png; sourceTree = "<group>"; };
 		F44892951B571E350050D0E4 /* thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "thumbnail@2x.png"; path = "images/thumbnail@2x.png"; sourceTree = "<group>"; };
+		F4B857121B57981900E6F7BB /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localized.strings; sourceTree = "<group>"; };
+		F4B857131B57981900E6F7BB /* fr */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = fr; path = fr.lproj/RSSLatticeConfigurationWindowController.xib; sourceTree = "<group>"; };
+		F4B857141B57982300E6F7BB /* fr */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = fr; path = rsscommon/fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		F4EE5E781B5529440081BE4A /* regular_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = regular_thumbnail.png; path = images/regular_thumbnail.png; sourceTree = "<group>"; };
 		F4EE5E791B5529440081BE4A /* regular_thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "regular_thumbnail@2x.png"; path = "images/regular_thumbnail@2x.png"; sourceTree = "<group>"; };
 		F4EE5E7C1B552A850081BE4A /* computer_thumbnail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = computer_thumbnail.png; path = images/computer_thumbnail.png; sourceTree = "<group>"; };
@@ -430,6 +433,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
 			);
 			mainGroup = F4F8F7B61B53F4D9002C5A2D;
 			productRefGroup = F4F8F7C11B53F4D9002C5A2D /* Products */;
@@ -548,6 +552,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4F8F80C1B53F6D0002C5A2D /* en */,
+				F4B857141B57982300E6F7BB /* fr */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
@@ -556,6 +561,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4F8F83B1B53FAC9002C5A2D /* en */,
+				F4B857121B57981900E6F7BB /* fr */,
 			);
 			name = Localized.strings;
 			sourceTree = "<group>";
@@ -564,6 +570,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				F4F8F83E1B53FACE002C5A2D /* en */,
+				F4B857131B57981900E6F7BB /* fr */,
 			);
 			name = RSSLatticeConfigurationWindowController.xib;
 			sourceTree = "<group>";
