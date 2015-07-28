@@ -289,7 +289,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" id="A8L-JX-rfi">
-                                <rect key="frame" x="262" y="42" width="126" height="21"/>
+                                <rect key="frame" x="263" y="42" width="126" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="100" doubleValue="10" tickMarkPosition="below" sliderType="linear" id="BdA-L6-iFI">
                                     <font key="font" size="12" name="Helvetica"/>
@@ -299,7 +299,7 @@ Gw
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Tz5-H3-Hv0">
-                                <rect key="frame" x="395" y="44" width="40" height="17"/>
+                                <rect key="frame" x="396" y="44" width="40" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" id="kgq-Ka-rbZ">
                                     <font key="font" metaFont="cellTitle"/>
@@ -308,7 +308,7 @@ Gw
                                 </textFieldCell>
                             </textField>
                             <slider verticalHuggingPriority="750" id="pjq-0c-RuM">
-                                <rect key="frame" x="262" y="17" width="126" height="21"/>
+                                <rect key="frame" x="263" y="17" width="126" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <sliderCell key="cell" continuous="YES" alignment="left" minValue="1" maxValue="8" doubleValue="8" tickMarkPosition="below" sliderType="linear" id="5Jh-X3-LQK">
                                     <font key="font" size="12" name="Helvetica"/>
@@ -318,7 +318,7 @@ Gw
                                 </connections>
                             </slider>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="5g0-Ab-yLR">
-                                <rect key="frame" x="395" y="19" width="40" height="17"/>
+                                <rect key="frame" x="396" y="19" width="40" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" enabled="NO" sendsActionOnEndEditing="YES" alignment="left" id="rOF-t1-mgD">
                                     <font key="font" metaFont="cellTitle"/>

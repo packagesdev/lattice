@@ -342,7 +342,7 @@ DQ
                                 </textFieldCell>
                             </textField>
                             <textField verticalHuggingPriority="750" id="RYn-bR-OcL">
-                                <rect key="frame" x="42" y="45" width="227" height="17"/>
+                                <rect key="frame" x="25" y="45" width="244" height="17"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="right" title="Caractère aléatoire de la caméra :" id="XUR-JK-v1z">
                                     <font key="font" metaFont="systemBold"/>
