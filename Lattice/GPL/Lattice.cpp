@@ -55,8 +55,6 @@ static int transitions[120] = {
         10, 4, 12, 17, 17, 17,
         15, 1, 3, 7, 7, 7};
 
-//float cullVec[5][3];  // represent planes for culling geometry
-
 // Modulus function for picking the correct element of lattice array
 int myMod(int x)
 {
@@ -548,9 +546,6 @@ void scene::draw(void)
 	_lastRefresh=tCurentTime;
 	
 	int i, j, k;
-	// Time from one frame to the next
-	//static float elapsedTime = 0.0f;
-	//static DWORD thisTime = timeGetTime(), lastTime;
 	int indexx, indexy, indexz;
 	rsVec xyz, dir, angvel, tempVec;
 	float angle, distance;
@@ -620,21 +615,10 @@ void scene::draw(void)
 		tempVec.scale((rotationInertia * tElapsedTime) / distance);
 		angvel = _oldAngvel + tempVec;
 	}
-	/*if(!flymodeChange)  // transition from one fly mode to the other?
-		if(!rsRandi(1000 - 7 * dSpeed))
-			flymodeChange = 1;
-	if(flymodeChange){
-		normScale = float(((200 - dSpeed) / 2) - flymodeChange) / float((200 - dSpeed) / 2);
-		angvel.scale(normScale);
-		if(flymodeChange == ((200 - dSpeed) / 2))
-			flymode = rsRandi(3);
-		flymodeChange++;
-		if(flymodeChange >= (200 - dSpeed))
-			flymodeChange = 0;
-	}*/
     
 	_flymodeChange -= tElapsedTime;
-    
+	
+	// transition from one fly mode to the other?
 	if(_flymodeChange <= 1.0f)  // prepare to transition
 		angvel.scale(_flymodeChange);
         
@@ -659,23 +643,19 @@ void scene::draw(void)
 	if(_rollChange <= 0.0f)
     {
 		_rollAcc = rsRandf(0.02f * float(dSpeed)) - (0.01f * float(dSpeed));
-//rollAcc = rsRandf(0.0004f * float(dSpeed)) - (0.0002f * float(dSpeed));
 		_rollChange = rsRandf(10.0f) + 2.0f;
 	}
     
 	_rollVel += _rollAcc * tElapsedTime;
     
 	if(_rollVel > (0.04f * float(dSpeed)) && _rollAcc > 0.0f)
-//if(rollVel > (0.0008f * float(dSpeed)) && rollAcc > 0.0f)
 		_rollAcc = 0.0f;
 	if(_rollVel < (-0.04f * float(dSpeed)) && _rollAcc < 0.0f)
-//if(rollVel < (-0.0008f * float(dSpeed)) && rollAcc < 0.0f)
 		_rollAcc = 0.0f;
     
     newQuat.make(_rollVel * tElapsedTime, _oldDir[0], _oldDir[1], _oldDir[2]);
 	_quat.preMult(newQuat);
 
-	//quat.normalize();
 	_quat.toMat(rotMat);
 
 	// Save old stuff
@@ -686,24 +666,27 @@ void scene::draw(void)
 	_oldAngvel = angvel;
 
 	// Apply transformations
+	glMatrixMode(GL_MODELVIEW);
 	glLoadMatrixf(rotMat);
-	//glLoadIdentity();
 	glGetFloatv(GL_MODELVIEW, cullMat);
 	glTranslatef(-xyz[0], -xyz[1], -xyz[2]);
-
-	// Transform culling planes
-	/*cullQuat.copy(quat);
-	cullQuat[3] = -cullQuat[3];
-	cullQuat.toMat(cullMat);
-	for(i=0; i<5; i++){
-		for(j=0; j<3; j++){
-			cull[i][j] = cullMat[j] * cullVec[i][0]
-				+ cullMat[4+j] * cullVec[i][1]
-				+ cullMat[8+j] * cullVec[i][2]
-				+ cullMat[12+j];
-		}
-	}*/
 	glGetFloatv(GL_MODELVIEW, transMat);
+	
+	// Just in case display lists contain no colors
+	glColor3f(1.0f, 1.0f, 1.0f);
+	
+	// Environment mapping for crystal, chrome, brass, shiny, and ghostly
+	if(torusTexture == LATTICE_TEXTURE_CRYSTAL ||
+	   torusTexture == LATTICE_TEXTURE_CHROME ||
+	   torusTexture == LATTICE_TEXTURE_BRASS  ||
+	   torusTexture == LATTICE_TEXTURE_SHINY ||
+	   torusTexture == LATTICE_TEXTURE_GHOSTLY)
+	{
+		glTexGeni(GL_S, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+		glTexGeni(GL_T, GL_TEXTURE_GEN_MODE, GL_SPHERE_MAP);
+		glEnable(GL_TEXTURE_GEN_S);
+		glEnable(GL_TEXTURE_GEN_T);
+	}
 
 	// Render everything
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -714,38 +697,11 @@ void scene::draw(void)
         {
 			for(k=_globalxyz[2]-drawDepth; k<=_globalxyz[2]+drawDepth; k++)
             {
-				// check 4 culling planes
-				/*tempVec[0] = float(i) - xyz[0];
-				tempVec[1] = float(j) - xyz[1];
-				tempVec[2] = float(k) - xyz[2];
-				if(tempVec.dot(cull[0]) > -0.9f){
-					if(tempVec.dot(cull[1]) > -0.9f){
-						if(tempVec.dot(cull[2]) > -0.9f){
-							if(tempVec.dot(cull[3]) > -0.9f){
-								if(tempVec.dot(cull[4]) > -(float(dDepth) + 0.9f)){
-									// if object isn't culled, calculate indices
-									indexx = myMod(i);  
-									indexy = myMod(j);
-									indexz = myMod(k);
-									// draw it
-									glPushMatrix();
-										glTranslatef(float(i), float(j), float(k));
-										glCallList(lattice[indexx][indexy][indexz]);
-									glPopMatrix();
-								}
-							}
-						}
-					}
-				}*/
-                
 				tempVec[0] = i - xyz[0];
 				tempVec[1] = j - xyz[1];
 				tempVec[2] = k - xyz[2];
                 
 				float tpos[3];  // transformed position
-				//tpos[0] = tempVec[0]*transMat[0] + tempVec[1]*transMat[4] + tempVec[2]*transMat[8] + transMat[12];
-				//tpos[1] = tempVec[0]*transMat[1] + tempVec[1]*transMat[5] + tempVec[2]*transMat[9] + transMat[13];
-				//tpos[2] = tempVec[0]*transMat[2] + tempVec[1]*transMat[6] + tempVec[2]*transMat[10] + transMat[14];
 				tpos[0] = tempVec[0]*rotMat[0] + tempVec[1]*rotMat[4] + tempVec[2]*rotMat[8];// + rotMat[12];
 				tpos[1] = tempVec[0]*rotMat[1] + tempVec[1]*rotMat[5] + tempVec[2]*rotMat[9];// + rotMat[13];
 				tpos[2] = tempVec[0]*rotMat[2] + tempVec[1]*rotMat[6] + tempVec[2]*rotMat[10];// + rotMat[14];
@@ -764,6 +720,9 @@ void scene::draw(void)
 			}
 		}
 	}
+	
+	glDisable(GL_TEXTURE_GEN_S);
+	glDisable(GL_TEXTURE_GEN_T);
 }
 
 void scene::create()
@@ -914,30 +873,6 @@ void scene::create()
 	}
 	_lastBorder = k;
 	_segments = 1;
-	
-	// Set vectors perpendicular to culling planes
-	// left
-	/*	cullVec[0][0] = cosf(dFov * 0.5f * D2R);
-	 cullVec[0][1] = 0.0f;
-	 cullVec[0][2] = -sinf(dFov * 0.5f * D2R);
-	 // right
-	 cullVec[1][0] = -cullVec[0][0];
-	 cullVec[1][1] = 0.0f;
-	 cullVec[1][2] = cullVec[0][2];
-	 // bottom
-	 cullVec[2][0] = 0.0f;
-	 //cullVec[2][1] = cosf(dFov * 0.5f * 0.75f * D2R);
-	 //cullVec[2][2] = -sinf(dFov * 0.5f * 0.75f * D2R);
-	 cullVec[2][1] = cosf(dFov * 0.5f * (float(top) / float(right)) * D2R);
-	 cullVec[2][2] = -sinf(dFov * 0.5f * (float(top) / float(right)) * D2R);
-	 // top
-	 cullVec[3][0] = 0.0f;
-	 cullVec[3][1] = -cullVec[2][1];
-	 cullVec[3][2] = cullVec[2][2];
-	 // far
-	 cullVec[4][0] = 0.0f;
-	 cullVec[4][1] = 0.0f;
-	 cullVec[4][2] = 1.0f;*/
 	
 	struct timeval tTime;
 	gettimeofday(&tTime, NULL);
