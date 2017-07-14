@@ -84,14 +84,14 @@ scene::scene()
 	rand(); rand(); rand(); rand(); rand();
 	rand(); rand(); rand(); rand(); rand();
 	
-	_path=(float **) malloc(7*sizeof(float **));
+	_path=(float **) malloc(7*sizeof(float *));
 	
 	for(int i=0;i<7;i++)
 	{
 		_path[i]=(float *) malloc(6*sizeof(float));
 	}
 	
-	_bPnt=(float **) malloc(10*sizeof(float **));
+	_bPnt=(float **) malloc(10*sizeof(float *));
 	
 	for(int i=0;i<10;i++)
 	{
@@ -545,7 +545,6 @@ void scene::draw(void)
 	float tElapsedTime=(tCurentTime-_lastRefresh)*0.001;
 	_lastRefresh=tCurentTime;
 	
-	int i, j, k;
 	int indexx, indexy, indexz;
 	rsVec xyz, dir, angvel, tempVec;
 	float angle, distance;
@@ -691,11 +690,11 @@ void scene::draw(void)
 	// Render everything
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     
-	for(i=_globalxyz[0]-drawDepth; i<=_globalxyz[0]+drawDepth; i++)
+	for(int i=_globalxyz[0]-drawDepth; i<=_globalxyz[0]+drawDepth; i++)
     {
-		for(j=_globalxyz[1]-drawDepth; j<=_globalxyz[1]+drawDepth; j++)
+		for(int j=_globalxyz[1]-drawDepth; j<=_globalxyz[1]+drawDepth; j++)
         {
-			for(k=_globalxyz[2]-drawDepth; k<=_globalxyz[2]+drawDepth; k++)
+			for(int k=_globalxyz[2]-drawDepth; k<=_globalxyz[2]+drawDepth; k++)
             {
 				tempVec[0] = i - xyz[0];
 				tempVec[1] = j - xyz[1];
