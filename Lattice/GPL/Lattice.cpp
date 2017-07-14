@@ -722,6 +722,8 @@ void scene::draw(void)
 	
 	glDisable(GL_TEXTURE_GEN_S);
 	glDisable(GL_TEXTURE_GEN_T);
+	
+	glFinish();
 }
 
 void scene::create()
