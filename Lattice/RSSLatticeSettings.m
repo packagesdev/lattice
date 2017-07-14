@@ -114,7 +114,7 @@ NSString * const RSSLattice_Settings_WidescreenKey=@"WideScreen";
 			_torusMaterial = RSSLatticeTextureTypeNone;
 			
 			_density = 50;
-			_depth = 3;
+			_depth = 4;
 			
 			_fieldOfView = 90;
 			_randomnessOfCameraPath = 7;
@@ -133,7 +133,7 @@ NSString * const RSSLattice_Settings_WidescreenKey=@"WideScreen";
 			_torusMaterial = RSSLatticeTextureTypeChrome;
 			
 			_density = 80;
-			_depth = 2;
+			_depth = 4;
 			
 			_fieldOfView = 90;
 			_randomnessOfCameraPath = 7;
@@ -152,7 +152,7 @@ NSString * const RSSLattice_Settings_WidescreenKey=@"WideScreen";
 			_torusMaterial = RSSLatticeTextureTypeBrass;
 			
 			_density = 50;
-			_depth = 3;
+			_depth = 4;
 			
 			_fieldOfView = 90;
 			_randomnessOfCameraPath = 7;
@@ -171,7 +171,7 @@ NSString * const RSSLattice_Settings_WidescreenKey=@"WideScreen";
 			_torusMaterial = RSSLatticeTextureTypeCircuits;
 			
 			_density = 90;
-			_depth = 3;
+			_depth = 4;
 			
 			_fieldOfView = 90;
 			_randomnessOfCameraPath = 7;
@@ -190,7 +190,7 @@ NSString * const RSSLattice_Settings_WidescreenKey=@"WideScreen";
 			_torusMaterial = RSSLatticeTextureTypeShiny;
 			
 			_density = 30;
-			_depth = 3;
+			_depth = 4;
 			_fieldOfView = 90;
 			_randomnessOfCameraPath = 7;
 			_cameraSpeed = 10;
@@ -208,7 +208,7 @@ NSString * const RSSLattice_Settings_WidescreenKey=@"WideScreen";
 			_torusMaterial = RSSLatticeTextureTypeDoughnuts;
 			
 			_density = 25;
-			_depth = 3;
+			_depth = 4;
 			
 			_fieldOfView = 90;
 			_randomnessOfCameraPath = 7;
