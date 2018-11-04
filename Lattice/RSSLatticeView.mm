@@ -49,7 +49,7 @@
 	inScene->torusThickness=(int)inSettings.torusThickness;
 	
 	if (inSettings.torusMaterial==RSSLatticeTextureTypeRandom)
-		inScene->torusTexture=(int) SSRandomFloatBetween(RSSLatticeSetRegular,RSSLatticeSetTasty);
+		inScene->torusTexture=(int) SSRandomFloatBetween(RSSLatticeTextureTypeNone,RSSLatticeTextureTypeDoughnuts);
 	else
 		inScene->torusTexture=(int)inSettings.torusMaterial;
 	
