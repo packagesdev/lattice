@@ -83,7 +83,7 @@
 {
 	[super windowDidLoad];
 	
-	_numberFormatter=[[NSNumberFormatter alloc] init];
+	_numberFormatter=[NSNumberFormatter new];
 	
 	if (_numberFormatter!=nil)
 	{
@@ -151,39 +151,39 @@
 	
 	[self _selectCollectionViewItemWithTag:tLatticeSettings.standardSet];
 	
-	[_longitudinalDivisionsSlider setIntegerValue:tLatticeSettings.numberOfLongitudinalDivisionsForTorus];
-	[_longitudinalDivisionsLabel setIntegerValue:tLatticeSettings.numberOfLongitudinalDivisionsForTorus];
+	_longitudinalDivisionsSlider.integerValue=tLatticeSettings.numberOfLongitudinalDivisionsForTorus;
+	_longitudinalDivisionsLabel.integerValue=tLatticeSettings.numberOfLongitudinalDivisionsForTorus;
 	
-	[_latitudinalDivisionsSlider setIntegerValue:tLatticeSettings.numberOfLatitudinalDivisionsForTorus];
-	[_latitudinalDivisionsLabel setIntegerValue:tLatticeSettings.numberOfLatitudinalDivisionsForTorus];
+	_latitudinalDivisionsSlider.integerValue=tLatticeSettings.numberOfLatitudinalDivisionsForTorus;
+	_latitudinalDivisionsLabel.integerValue=tLatticeSettings.numberOfLatitudinalDivisionsForTorus;
 	
-	[_torusThicknessSlider setIntegerValue:tLatticeSettings.torusThickness];
-	[_torusThicknessLabel setIntegerValue:tLatticeSettings.torusThickness];
+	_torusThicknessSlider.integerValue=tLatticeSettings.torusThickness;
+	_torusThicknessLabel.integerValue=tLatticeSettings.torusThickness;
 	
 	[_torusMaterialPopupButton selectItemWithTag:tLatticeSettings.torusMaterial];
 	
 	
-	[_sceneDensitySlider setIntegerValue:tLatticeSettings.density];
-	[_sceneDensityLabel setIntegerValue:tLatticeSettings.density];
+	_sceneDensitySlider.integerValue=tLatticeSettings.density;
+	_sceneDensityLabel.integerValue=tLatticeSettings.density;
 	
-	[_sceneDepthSlider setIntegerValue:tLatticeSettings.depth];
-	[_sceneDepthLabel setIntegerValue:tLatticeSettings.depth];
-	
-	
-	[_fieldOfViewSlider setIntegerValue:tLatticeSettings.fieldOfView];
-	[_fieldOfViewLabel setIntegerValue:tLatticeSettings.fieldOfView];
-	
-	[_randomnessOfCameraPathSlider setIntegerValue:tLatticeSettings.randomnessOfCameraPath];
-	[_randomnessOfCameraPathLabel setIntegerValue:tLatticeSettings.randomnessOfCameraPath];
-	
-	[_cameraSpeedSlider setIntegerValue:tLatticeSettings.cameraSpeed];
-	[_cameraSpeedLabel setIntegerValue:tLatticeSettings.cameraSpeed];
+	_sceneDepthSlider.integerValue=tLatticeSettings.depth;
+	_sceneDepthLabel.integerValue=tLatticeSettings.depth;
 	
 	
-	[_smoothShadingCheckBox setState:(tLatticeSettings.smoothShading==YES) ? NSOnState : NSOffState];
-	[_depthCueCheckBox setState:(tLatticeSettings.depthCue==YES) ? NSOnState : NSOffState];
+	_fieldOfViewSlider.integerValue=tLatticeSettings.fieldOfView;
+	_fieldOfViewLabel.integerValue=tLatticeSettings.fieldOfView;
 	
-	[_widescreenCheckBox setState:(tLatticeSettings.widescreen==YES) ? NSOnState : NSOffState];
+	_randomnessOfCameraPathSlider.integerValue=tLatticeSettings.randomnessOfCameraPath;
+	_randomnessOfCameraPathLabel.integerValue=tLatticeSettings.randomnessOfCameraPath;
+	
+	_cameraSpeedSlider.integerValue=tLatticeSettings.cameraSpeed;
+	_cameraSpeedLabel.integerValue=tLatticeSettings.cameraSpeed;
+	
+	
+	_smoothShadingCheckBox.state=(tLatticeSettings.smoothShading==YES) ? NSOnState : NSOffState;
+	_depthCueCheckBox.state=(tLatticeSettings.depthCue==YES) ? NSOnState : NSOffState;
+	
+	_widescreenCheckBox.state=(tLatticeSettings.widescreen==YES) ? NSOnState : NSOffState;
 }
 
 #pragma mark -
@@ -225,7 +225,7 @@
 	{
 		tLatticeSettings.numberOfLongitudinalDivisionsForTorus=[sender integerValue];
 		
-		[_longitudinalDivisionsLabel setIntegerValue:tLatticeSettings.numberOfLongitudinalDivisionsForTorus];
+		_longitudinalDivisionsLabel.integerValue=tLatticeSettings.numberOfLongitudinalDivisionsForTorus;
 		
 		[self _setAsCustomSet];
 	}
@@ -239,7 +239,7 @@
 	{
 		tLatticeSettings.numberOfLatitudinalDivisionsForTorus=[sender integerValue];
 		
-		[_latitudinalDivisionsLabel setIntegerValue:tLatticeSettings.numberOfLatitudinalDivisionsForTorus];
+		_latitudinalDivisionsLabel.integerValue=tLatticeSettings.numberOfLatitudinalDivisionsForTorus;
 		
 		[self _setAsCustomSet];
 	}
@@ -253,7 +253,7 @@
 	{
 		tLatticeSettings.torusThickness=[sender integerValue];
 		
-		[_torusThicknessLabel setIntegerValue:tLatticeSettings.torusThickness];
+		_torusThicknessLabel.integerValue=tLatticeSettings.torusThickness;
 		
 		[self _setAsCustomSet];
 	}
@@ -279,7 +279,7 @@
 	{
 		tLatticeSettings.density=[sender integerValue];
 		
-		[_sceneDensityLabel setIntegerValue:tLatticeSettings.density];
+		_sceneDensityLabel.integerValue=tLatticeSettings.density;
 		
 		[self _setAsCustomSet];
 	}
@@ -293,7 +293,7 @@
 	{
 		tLatticeSettings.depth=[sender integerValue];
 		
-		[_sceneDepthLabel setIntegerValue:tLatticeSettings.depth];
+		_sceneDepthLabel.integerValue=tLatticeSettings.depth;
 		
 		[self _setAsCustomSet];
 	}
@@ -307,7 +307,7 @@
 	{
 		tLatticeSettings.fieldOfView=[sender integerValue];
 		
-		[_fieldOfViewLabel setIntegerValue:tLatticeSettings.fieldOfView];
+		_fieldOfViewLabel.integerValue=tLatticeSettings.fieldOfView;
 		
 		[self _setAsCustomSet];
 	}
@@ -321,7 +321,7 @@
 	{
 		tLatticeSettings.randomnessOfCameraPath=[sender integerValue];
 		
-		[_randomnessOfCameraPathLabel setIntegerValue:tLatticeSettings.randomnessOfCameraPath];
+		_randomnessOfCameraPathLabel.integerValue=tLatticeSettings.randomnessOfCameraPath;
 		
 		[self _setAsCustomSet];
 	}
@@ -335,7 +335,7 @@
 	{
 		tLatticeSettings.cameraSpeed=[sender integerValue];
 		
-		[_cameraSpeedLabel setIntegerValue:tLatticeSettings.cameraSpeed];
+		_cameraSpeedLabel.integerValue=tLatticeSettings.cameraSpeed;
 		
 		[self _setAsCustomSet];
 	}
